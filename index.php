@@ -51,6 +51,9 @@
 </div>
 
 <div class="container">
+<div class="row">
+<div class="col-md-6">
+<h1>IF ELSE</h1>
 <?php
 
 
@@ -75,10 +78,50 @@ if ($flleeftijd < 18)
 } else {
 	echo'U kunt door gaan u bent ouder dan 18, Lekker bezig.';	
 }
-// for en while loopies
-
 ?>
 </div>
+<div class="col-md-6">
+<h1>FOR WHILE LOOPS</h1>
+
+<?php
+// for en while loopies
+
+for($i = 1; $i <= 10; $i++)
+{
+	echo $i;
+}
+?>
+</div></div>
+<div class="row">
+<div class="col-md-6">
+<h1>ARRAYS</H1>
+<?php
+//arrays and shizzle
+$argegevens = array('Duckstad', '1111AA', '06-12345678', 'mail@example.com');
+echo '<p>Raw output ARRAY:</p>'.'<pre>'.print_r($argegevens, true). '</pre><br>';
+echo '<p>Mijn woonplaats is '.$argegevens[0].' Had je niet gedacht heh!</p>';
+
+//foreach loop array uitlezen
+foreach($argegevens as $frgegevens){
+	echo $frgegevens;
+}
+
+//associatieve array
+$arleeftijden = array(
+'pieter' => 22,
+'willem' => 8,
+'jemoeder' => 100,
+'jan' => 52
+); 
+echo '<p>Raw output associatieve ARRAY:</p>'.'<pre>'.print_r($arleeftijden, true). '</pre><br>';
+echo '<p>Jemoeder is al '.$arleeftijden['jemoeder'].'. Dat is toch niet normaal gast!.</p>';
+foreach ($arleeftijden as $frleeftijden => $ileeftijden ){
+	echo $frleeftijden.': '.$ileeftijden.' ';
+}
+?>
+
+
+</div></div>
     
  </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
