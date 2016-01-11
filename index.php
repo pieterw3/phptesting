@@ -93,13 +93,17 @@ for($i = 1; $i <= 10; $i++)
 ?>
 </div></div>
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-12">
 <h1>ARRAYS</H1>
 <?php
 //arrays and shizzle
 $argegevens = array('Duckstad', '1111AA', '06-12345678', 'mail@example.com');
-echo '<p>Raw output ARRAY:</p>'.'<pre>'.print_r($argegevens, true). '</pre><br>';
+echo '<p><strong>Raw output ARRAY:</strong></p>'.'<pre>'.print_r($argegevens, true). '</pre><br>';
 echo '<p>Mijn woonplaats is '.$argegevens[0].' Had je niet gedacht heh!</p>';
+// waarden toevoegen aan array
+$argegevens[] = 'NL';
+array_push($argegevens, 'UMT+1');
+echo '<p><strong>Waarden toegevoegd:</strong></p>'.'<pre>'.print_r($argegevens, true). '</pre><br>';
 
 //foreach loop array uitlezen
 foreach($argegevens as $frgegevens){
@@ -108,22 +112,123 @@ foreach($argegevens as $frgegevens){
 
 //associatieve array
 $arleeftijden = array(
-'pieter' => 22,
-'willem' => 8,
-'jemoeder' => 100,
-'jan' => 52
+'Pieterieter' => 22,
+'Willem' => 8,
+'Jemoeder' => 100,
+'Jan' => 52
 ); 
-echo '<p>Raw output associatieve ARRAY:</p>'.'<pre>'.print_r($arleeftijden, true). '</pre><br>';
-echo '<p>Jemoeder is al '.$arleeftijden['jemoeder'].'. Dat is toch niet normaal gast!.</p>';
+echo '<p><strong>Raw output associatieve ARRAY:</strong></p>'.'<pre>'.print_r($arleeftijden, true). '</pre><br>';
+echo '<p>Jemoeder is al '.$arleeftijden['Jemoeder'].'. Dat is toch niet normaal gast!.</p>';
+echo '<p><strong>Foreach output:</strong></p>';
 foreach ($arleeftijden as $frleeftijden => $ileeftijden ){
 	echo $frleeftijden.': '.$ileeftijden.' ';
+}
+echo '<p><strong>Multidimensionale array output:</strong></p>';
+//multidimensionale arrays
+$arnederland = array(
+	'Plaatsen' => array(
+		'Amsterdam',
+		'Eindhoven',
+		'Alkmaar'
+	),
+	'Pretparken' => array(
+		'Efteling',
+		'Slagharen',
+		'Toverland'
+	)
+);
+echo '<pre>'.print_r($arnederland, true).'</pre><br>';
+echo $arnederland['Plaatsen'][2].' is een kut stad!';
+echo '<p><strong>Foreach output:</strong></p>';
+//foreach output
+foreach ($arnederland as $frsoort => $frlocaties )
+{
+	echo'<b>'.$frsoort.'</b> ';
+	foreach($frlocaties as $frlocatie)
+	{
+		echo $frlocatie.' ';
+	}
 }
 ?>
 
 
 </div></div>
-    
- </div>
+    <div class="row">
+<div class="col-md-12">
+<h1>FUNCTIONS</h1>
+<?php
+//functie definiëren
+function geefmijweer ()
+{
+	echo 'Dit is geen weer, ';
+}
+//functie oproepen
+geefmijweer();
+
+function geefwatterug ()
+{
+	return 'Hello Cruel World, ';
+}
+echo geefwatterug();
+//function met parameter
+function geefmijweer2 ($sstring)
+{
+	echo $sstring;
+}
+geefmijweer2('Tekst via parameter ');
+
+//function voor tellen items array
+function tel($ararray)
+{
+	//beginnen met tellen bij 0
+	$iaantal = 0;
+	
+	//array doorlopen en 1 optellen bij $iaantal optellen
+	foreach ($ararray as $waarde) 
+	{
+		//tel 1 bij $iaantal op
+		$iaantal++;
+	}
+	//eind getal na optellen
+	return $iaantal;
+}
+$arraytest = array(1,2,3,4,5);
+//functie testen
+echo '$arraytest bevat '.tel($arraytest).' items. ';
+
+$sgebruikersnaam ='adminadmiadmiadmiadmi';
+//gebruikersnaam testen op lengte en mag niet admin zijn
+function checkgebruiker($sgebruikersnaam){
+	if(strlen($sgebruikersnaam) >15) {
+		return false;
+	} 
+	elseif ($sgebruikersnaam == 'admin' ){
+		return false;
+	} 
+	elseif (strlen($sgebruikersnaam) >3) {
+		return true;		
+	}
+	else {
+		return false;
+	}
+}
+if (checkgebruiker($sgebruikersnaam)){
+	echo 'Gebruikersnaam is geldig';
+} else {
+	echo 'Gebruikersnaam is ongeldig';
+}
+
+//http://www.phphulp.nl/php/tutorial/overig/php-beginners-handleiding/575/functies/1486/
+
+?>
+
+</div></div>
+ </div></div>
+ <footer class="footer">
+      <div class="container footer-container">
+        <p class="text-muted text-center" ><?php echo'Copyright Pieter Willemse '.date('Y');?></p>
+      </div>
+    </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	
