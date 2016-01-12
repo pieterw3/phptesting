@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $aData = array();
     
     // Velden die in het formulier aanwezig moeten zijn
-    $aFormulierVelden = array('voornaam', 'achternaam');
+    $aFormulierVelden = array('voornaam', 'achternaam','dag','maand','jaar');
     
     // Alle formuliervelden doorlopen
     foreach($aFormulierVelden as $sVeld)
@@ -33,14 +33,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             $aErrors[] = 'Het veld '.$sVeld.' is niet gepost!';
         }
     }
-    
+    // datum controle
+	if(isset($aData['maand'],$aData['dag'],$aData['jaar']) && checkdate ($aData['maand'],$aData['dag'],$aData['jaar']))
+	{
+		$sdatum =$aData['dag'].'-'.$aData['maand'].'-'.$aData['jaar'];
+	} else {
+		$aErrors[] = 'Dit is geen geldige datum';
+	}
     // Controleren of er geen fouten opgetreden zijn
     if(empty($aErrors))
     {
         // Formulier succes!
         echo '<p>Je hebt het formulier succesvol ingevuld! De volgende gegevens zijn bekend:</p>';
-        echo '<p>Voornaam: '.$aData['voornaam'].'<br />';
-        echo 'Achternaam: '.$aData['achternaam'].'</p>';
+        echo '<p>Naam: '.$aData['voornaam'].' '.$aData['achternaam'];
+        
+		echo '<p>Geboortedatum: '.$sdatum.' ';
     }
     else
     {

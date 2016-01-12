@@ -240,33 +240,65 @@ Echo 'Totaal incl. BTW: '.calctotaal($arbedragen, true).' ';
 ?>
 </div></div>
     <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <h1>FORMULIER</h1>
 </div>
    
-<div class="col-md-4">
+<div class="col-md-6">
 <br><br>
 
 <form role="form" action="php/verwerken.php" method="post">
 
 <div class="form-group">
-<label for="voornaam">Voornaam</label>
-<input type="text" id="formvoornaam" class="form-control">
+<label for="voornaam">Voornaam:</label>
+<input type="text" id="voornaam" class="form-control" name="voornaam">
 </div>
 
 <div class="form-group">
-<label for="achternaam">Achternaam</label>
-<input type="text" id="formachternaam" class="form-control">
+<label for="achternaam">Achternaam:</label>
+<input type="text" id="achternaam" class="form-control" name="achternaam">
 </div>
 
+<div class="form-group">
+ <label>Geboortedatum:</label>
+        <select name="dag" class="form-control">
+            <?php
+            for($i = 1; $i <= 31; $i++)
+            {
+
+                echo '<option value="'.$i.'">'.$i.'</option>';
+            }
+            ?>
+        </select>
+        <select name="maand" class="form-control">
+            <?php
+            for($i = 1; $i <= 12; $i++)
+            {
+                echo '<option value="'.$i.'">'.$i.'</option>';
+            }
+            ?>
+        </select>
+        <select name="jaar" class="form-control">
+            <?php
+            for($i = date('Y'); $i >= 1920; $i--)
+            {
+                echo '<option value="'.$i.'">'.$i.'</option>';
+            }
+            ?>
+        </select>
+</div>
 <button type="submit" class="btn btndefault">Verzenden</button>
 </form>
 
 </div>
 
    
-<div class="col-md-4">
+<div class="col-md-3">
 </div></div>
+
+<?php
+//http://www.phphulp.nl/php/tutorial/overig/php-beginners-handleiding/575/superglobals/1488/
+?>
 
  </div></div>
  <footer class="footer">
