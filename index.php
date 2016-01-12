@@ -296,10 +296,14 @@ Echo 'Totaal incl. BTW: '.calctotaal($arbedragen, true).' ';
 <div class="col-md-3">
 </div></div>
 
+<div class="row">
+<div class="col-md-12">
+<h1>SUPERGLOBALS</h1>
 <?php
 //http://www.phphulp.nl/php/tutorial/overig/php-beginners-handleiding/575/superglobals/1488/
 ?>
 
+</div></div>
  </div></div>
  <footer class="footer">
       <div class="container footer-container">
