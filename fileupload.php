@@ -64,11 +64,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <?php include('header.php') ?>
 
 
-    <?php 
-	//Koekje uit index.php
-	echo 'Welkom '.$_COOKIE['KutKoekje'];
-	
-	?>
+    
         <h1>Bestanden uploaden</h1>
                 
         <form action="#" method="post" id="upload" enctype="multipart/form-data">
