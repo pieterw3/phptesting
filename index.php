@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Boostrap</title>
+    <title>PHP scripts</title>
  
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -197,7 +197,7 @@ $arraytest = array(1,2,3,4,5);
 echo '$arraytest bevat '.tel($arraytest).' items. ';
 
 $sgebruikersnaam ='adminadmiadmiadmiadmi';
-//gebruikersnaam testen op lengte en mag niet admin zijn
+//gebruikersnaam testen op lengte en mag niet admin zijn en langer dan 15 letters is niet goed.
 function checkgebruiker($sgebruikersnaam){
 	if(strlen($sgebruikersnaam) >15) {
 		return false;
@@ -213,16 +213,61 @@ function checkgebruiker($sgebruikersnaam){
 	}
 }
 if (checkgebruiker($sgebruikersnaam)){
-	echo 'Gebruikersnaam is geldig';
+	echo 'Gebruikersnaam is geldig ';
 } else {
-	echo 'Gebruikersnaam is ongeldig';
+	echo 'Gebruikersnaam is ongeldig ';
 }
 
-//http://www.phphulp.nl/php/tutorial/overig/php-beginners-handleiding/575/functies/1486/
-
+//functie bedrag optellen optioneel btw
+function calctotaal($arbedragen, $abtw = false)
+{
+	//totaal berekeken van array $arbedragen
+	$ftotaal = array_sum($arbedragen);
+	
+	//kijken of btw berekend moet worden
+	if ($abtw) 
+	{
+		//het totaal * 1.21 (21% btw)
+		$ftotaal *= 1.21;
+	}
+	// totaal return
+	return number_format($ftotaal, 2);
+}
+//functie testen
+$arbedragen = array(5.45, 9.95, 34.95);
+Echo 'Totaal excl. BTW: '.calctotaal($arbedragen).' ';
+Echo 'Totaal incl. BTW: '.calctotaal($arbedragen, true).' ';
 ?>
-
 </div></div>
+    <div class="row">
+<div class="col-md-4">
+<h1>FORMULIER</h1>
+</div>
+   
+<div class="col-md-4">
+<br><br>
+
+<form role="form" action="php/verwerken.php" method="post">
+
+<div class="form-group">
+<label for="voornaam">Voornaam</label>
+<input type="text" id="formvoornaam" class="form-control">
+</div>
+
+<div class="form-group">
+<label for="achternaam">Achternaam</label>
+<input type="text" id="formachternaam" class="form-control">
+</div>
+
+<button type="submit" class="btn btndefault">Verzenden</button>
+</form>
+
+</div>
+
+   
+<div class="col-md-4">
+</div></div>
+
  </div></div>
  <footer class="footer">
       <div class="container footer-container">
